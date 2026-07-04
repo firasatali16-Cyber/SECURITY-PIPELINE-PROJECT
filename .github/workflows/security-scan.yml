@@ -1,13 +1,14 @@
 name: Security Scan Pipeline
 
-on: [push] # Yeh line zaroori h!
+on: [push]
 
 jobs:
-  bandit-scan
-    runs-on: unbuntu-latest
+  bandit-scan:
+    runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@v3
-      - name: Run bandit
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Run Bandit
         run: |
           pip install bandit
           bandit -r .
